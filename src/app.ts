@@ -1,15 +1,19 @@
-import { People } from "./class/People"
+import { BankAccount } from "./model/Account"
 
 class App {
 
-  public static main() {
-    console.log('Hello POO')
+  public static main(): void {
+    const bankAccount: BankAccount = new BankAccount('0826', '080305621', 1, 4000.0)
 
-    const people: People = new People()
-    people.setName('Diego Almeida')
-    people.setAge(30)
+    console.table(bankAccount)
 
-    console.table(people)
+    bankAccount.deposit(500)
+
+    console.table(bankAccount)
+
+    bankAccount.withdraw(1000)
+
+    console.table(bankAccount)
 
   }
 }
