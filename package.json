@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd --exit-child src/app.ts"
+    "dev": "tsnd src/app.ts"
   },
   "devDependencies": {
     "ts-node-dev": "^2.0.0",
