@@ -6,8 +6,8 @@ class App {
     console.log('Hello POO')
 
     const people: People = new People()
-    people.name = 'Diego Almeida'
-    people.age = 30
+    people.setName('Diego Almeida')
+    people.setAge(30)
 
     console.table(people)
 
