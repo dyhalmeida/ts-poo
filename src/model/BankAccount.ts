@@ -58,4 +58,9 @@ export class BankAccount {
      return value
   }
 
+  public transfer(value: number, account: BankAccount): void {
+    this.withdraw(value)
+    account.deposit(value)
+  }
+
 }
