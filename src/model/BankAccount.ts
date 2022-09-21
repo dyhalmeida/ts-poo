@@ -4,6 +4,7 @@ export abstract class BankAccount {
   private _account: string
   private _digit: number
   private _balance: number
+  private _createdAt: Date
   private readonly _MINIMUM_VALUE_DEPOSIT: number = 10.0
 
   constructor(agency: string, account: string, digit: number, balance: number) {
@@ -11,6 +12,7 @@ export abstract class BankAccount {
     this._account = account
     this._digit = digit
     this._balance = balance
+    this._createdAt = new Date()
   }
   
   public get agency(): string {
@@ -39,6 +41,10 @@ export abstract class BankAccount {
 
   public get balance(): number {
     return this._balance
+  }
+
+  public get createdAt(): Date {
+    return this._createdAt
   }
 
   public deposit(value: number): void {
