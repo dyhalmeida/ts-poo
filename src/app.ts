@@ -1,3 +1,4 @@
+import { App2 } from "./app2"
 import { BankAccountCC } from "./model/BankAccountCC"
 import { BankAccountCP } from "./model/BankAccountCP"
 
@@ -19,4 +20,5 @@ class App {
   }
 }
 
-App.main()
+// App.main()
+App2.main()
