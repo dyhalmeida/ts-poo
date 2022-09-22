@@ -1,9 +1,12 @@
+import { Movement } from "./Movement"
+
 export abstract class BankAccount {
   
   private _agency: string
   private _account: string
   private _digit: number
   private _balance: number
+  protected _movements: Movement[]
   private _createdAt: Date
   private readonly _MINIMUM_VALUE_DEPOSIT: number = 10.0
 
@@ -13,6 +16,9 @@ export abstract class BankAccount {
     this._digit = digit
     this._balance = balance
     this._createdAt = new Date()
+
+    this._movements = []
+    this._movements.push(new Movement('Open account', balance))
   }
   
   public get agency(): string {
@@ -52,6 +58,7 @@ export abstract class BankAccount {
       throw new RangeError(`O valor mínimo para deposito é de ${this._MINIMUM_VALUE_DEPOSIT}`)
     }
     this._balance += value
+    this._movements.push(new Movement('Deposit', value))
   }
 
   public withdraw(value: number): number {
@@ -60,13 +67,16 @@ export abstract class BankAccount {
       throw new RangeError('Saldo insuficiente');
     }
 
-     this._balance -= value
-     return value
+    this._balance -= value
+    this._movements.push(new Movement('Withdraw', value))
+    return value
   }
 
   public transfer(value: number, account: BankAccount): void {
     this.withdraw(value)
     account.deposit(value)
   }
+
+  public abstract extract(): void
 
 }
